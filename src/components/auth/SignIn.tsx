@@ -35,6 +35,7 @@ const SignIn: FC<{ setModalOpen: Dispatch<SetStateAction<AuthModals>>; }> = ({
                         name="email"
                         id="email"
                         placeholder="Email"
+                        required={true}
                     />
                 </div>
                 <div className="d-flex">
@@ -45,6 +46,7 @@ const SignIn: FC<{ setModalOpen: Dispatch<SetStateAction<AuthModals>>; }> = ({
                         name="password"
                         id="password"
                         placeholder="Password"
+                        required={true}
                     />
                 </div>
                 <input className="btn btn-grad" type="submit" value="Sign in" />

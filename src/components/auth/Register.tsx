@@ -12,15 +12,22 @@ const Register: FC<{ setModalOpen: Dispatch<SetStateAction<AuthModals>>; }> = ({
             const target = e.target as typeof e.target & {
                 [key: string]: { value: string; };
             };
-            console.log(target);
-            const email = target.email.value;
             const password = target.password.value;
-            const name = target["name"].valueOf;
+            const confirmPassword = target.confirmPassword.value;
+            const name = target.name.value;
             const phoneNumber = target.phoneNumber.value;
             const userType = target["user-type-radio"].value;
             // Custom validation
             if (password.length < 5) {
                 alert('Password is too short');
+                return;
+            }
+            if (name.length < 7) {
+                alert('The field name should contain at least 7 characters');
+                return;
+            }
+            if (confirmPassword!==password){
+                alert ("Confirm password sould be the same with password");
                 return;
             }
             setModalOpen(AuthModals.CLOSED);
@@ -44,6 +51,7 @@ const Register: FC<{ setModalOpen: Dispatch<SetStateAction<AuthModals>>; }> = ({
                         name="email"
                         id="email"
                         placeholder="Email address "
+                        required={true}
                     />
                 </div>
                 <div className="d-flex">
@@ -53,6 +61,7 @@ const Register: FC<{ setModalOpen: Dispatch<SetStateAction<AuthModals>>; }> = ({
                         name="name"
                         id="name"
                         placeholder="Your Name"
+                        required={true}
                     />
                 </div>
                 <div className="d-flex">
@@ -62,6 +71,7 @@ const Register: FC<{ setModalOpen: Dispatch<SetStateAction<AuthModals>>; }> = ({
                         name="phoneNumber"
                         id="phoneNumber"
                         placeholder="Phone Number"
+                        required={true}
                     />
                 </div>
                 <div className="d-flex">
@@ -72,6 +82,18 @@ const Register: FC<{ setModalOpen: Dispatch<SetStateAction<AuthModals>>; }> = ({
                         name="password"
                         id="password"
                         placeholder="Password"
+                        required={true} 
+                    />
+                </div>
+                <div className="d-flex">
+                    <i className="fa-solid fa-lock bg-secondary"></i>
+                    <input
+                        className="style-input"
+                        type="password"
+                        name="confirmPassword"
+                        id="confirmPassword"
+                        placeholder="Confirm Password"
+                        required={true} 
                     />
                 </div>
                 <span className="span-style mt-10">I want to register as a:</span>
