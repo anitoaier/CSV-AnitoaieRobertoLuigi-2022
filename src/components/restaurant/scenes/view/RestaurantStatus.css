@@ -1,0 +1,40 @@
+
+.status-component {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.status-constainer {
+    width: 80px;
+    display: flex;
+    padding: 4px;
+    border-radius: 100px;
+    justify-content: space-around;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.status-constainer.opened {
+    background: green;
+    flex-direction: row;
+    
+}
+
+.status-constainer.closed {
+    background: red;
+    flex-direction: row-reverse;
+}
+
+.dot-status {
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 20px;
+}
+
+.status-label {
+  line-height: 20px;
+  text-align: center;
+  font-weight: bold;
+
+}
