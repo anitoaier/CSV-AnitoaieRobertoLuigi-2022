@@ -3,14 +3,12 @@ import { AuthModals } from "./types";
 import { UserTypes } from "./types";
 import './auth-styles.css';
 import { useUserAuth } from "../../contexts/AuthContext";
-import { useAlert } from "react-bootstrap-hooks-alert";
 
 const Register: FC<{ setModalOpen: Dispatch<SetStateAction<AuthModals>>; }> = ({
     setModalOpen,
 }) => {
 
     const { signUp } = useUserAuth();
-    const { success, danger } = useAlert();
 
     const onSubmit = async (e: SyntheticEvent) => {
         try {
@@ -27,11 +25,11 @@ const Register: FC<{ setModalOpen: Dispatch<SetStateAction<AuthModals>>; }> = ({
             await signUp(email,password,phoneNumber,name,userType);
             // Custom validation
             if (password.length < 5) {
-                danger('Password is too short');
+                alert('Password is too short');
                 return;
             }
             setModalOpen(AuthModals.CLOSED);
-            success('Registered succesfully');
+            alert('Registered succesfully');
         } catch (err) {
             console.error(err);
             alert(err);
