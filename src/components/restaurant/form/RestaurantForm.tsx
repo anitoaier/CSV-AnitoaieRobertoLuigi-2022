@@ -14,7 +14,6 @@ export interface formDataInterface {
   address: string;
   phone: string;
   email: string;
-  temporaryClosed: boolean;
   imageRef: string;
 }
 
@@ -36,9 +35,7 @@ const RestaurantForm = (props: {
     e.preventDefault();
     setSaving(true);
     const target = e.target as typeof e.target & {
-      [key: string]: {
-        checked: any; value: string 
-};
+      [key: string]: { value: string };
     };
     const name = target.restaurantName.value;
     const shortDescription = target.shortDescription.value;
@@ -47,7 +44,6 @@ const RestaurantForm = (props: {
     const opensAt = target.opensAt.value;
     const closesAt = target.closesAt.value;
     const phone = target.phone.value;
-    const temporaryClosed = target.temporaryClosed ? target.temporaryClosed.checked : false;
     const email = target.email.value;
     if (
       !(
@@ -73,7 +69,6 @@ const RestaurantForm = (props: {
       opensAt,
       closesAt,
       phone,
-      temporaryClosed,
       email,
     };
 
@@ -140,14 +135,6 @@ const RestaurantForm = (props: {
               value={restaurant?.email || ""}
               name="email"
             ></Input>
-            {props.submitActionName === "Save" && (
-              <Input
-                label="Temporary Closed"
-                type="checkbox"
-                defaultChecked={restaurant?.temporaryClosed || false}
-                name="temporaryClosed"
-              ></Input>
-            )}
             <div className="mt-10 d-flex">
               <div className="d-flex w-100">
                 <label className="d-block label-style" htmlFor="photo">

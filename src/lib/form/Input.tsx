@@ -2,8 +2,7 @@ const Input = (props: {
   label: string;
   type: string;
   name: string;
-  value?: string;
-  defaultChecked?: boolean;
+  value: string;
 }) => {
   return (
     <div className="mt-10 d-flex">
@@ -18,7 +17,6 @@ const Input = (props: {
         name={props.name}
         defaultValue={props.value}
         placeholder={props.label}
-        defaultChecked={props.defaultChecked}
       />
     </div>
   );
