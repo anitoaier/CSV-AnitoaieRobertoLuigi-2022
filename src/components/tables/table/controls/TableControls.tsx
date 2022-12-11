@@ -9,6 +9,8 @@ const TableControls = (props: {
         id: string;
         name: string;
         capacity: number;
+        type: string;
+        description: string;
     };
 }) => {
     return (
