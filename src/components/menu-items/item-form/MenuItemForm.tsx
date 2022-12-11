@@ -27,7 +27,7 @@ const MenuItemForm = (props: {
       price: target.price.value,
       ingredients: target.ingredients.value,
       category: target.category.value,
-      uploadedImage: target.photo.files[0]|| null,
+      uploadedImage: target.photo.files[0],
     }
     props.onSubmit(menuItemData);
   }
