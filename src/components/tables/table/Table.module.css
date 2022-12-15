@@ -5,11 +5,14 @@
   border-radius: 10px;
   height: 100px;
   color: rgb(141, 182, 232);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .table-name {
   position: relative;
-  top: 35px;
 }
 
 .chairs {

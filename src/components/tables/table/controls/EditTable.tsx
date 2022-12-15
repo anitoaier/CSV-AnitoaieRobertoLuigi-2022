@@ -10,6 +10,8 @@ const EditMenuItem = (props: {
         id: string;
         name: string;
         capacity: number;
+        type: string;
+        description: string;
     }
 }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -28,7 +30,7 @@ const EditMenuItem = (props: {
         <div>
             <button className="btn btn-grad" onClick={clickHandler}>Edit</button>
             <Modal isOpen={isModalOpen} close={modalCloseHandler}>
-                <h2>Edit Menu Item</h2>
+                <h2>Edit Table</h2>
                 <TableForm onSubmit={editTable} table={props.table}/>
             </Modal>
         </div>
