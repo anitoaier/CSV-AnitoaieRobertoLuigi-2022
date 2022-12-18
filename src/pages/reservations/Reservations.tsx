@@ -1,10 +1,11 @@
 import { DocumentData } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { UserTypes } from "../../components/auth/types";
-import { get, set, whereQuery } from "../../configs/firebase/actions";
+import { get, remove, set, whereQuery } from "../../configs/firebase/actions";
 import useUserDetails from "../../hooks/UserDetailsHook";
 import NavigateButton from "../../lib/navigate-button/NavigateButton";
 import LandingImage from "../landing/LandingImage";
+import CancelReservationButton from "./cancel-reservation/CancelReservationButton";
 
 const Reservations = () => {
   const [loading, setLoading] = useState(true);
@@ -74,6 +75,15 @@ const Reservations = () => {
       setReservations(newReservations);
     });
   };
+  const deleteReservation = (reservationId:string) => {
+    remove("reservations", reservationId).then(()=>{
+      setReservations((prevReservations) => {
+        const newReservations = prevReservations?.filter((reservation) => reservation.id !== reservationId );
+        return newReservations;
+    })
+      alert("Reservation was canceled succesfully")
+    })
+}
 
   return (
     <>
@@ -99,13 +109,14 @@ const Reservations = () => {
             >
               Details
             </NavigateButton>
+            <CancelReservationButton onClick={()=>deleteReservation(reservation.id)}></CancelReservationButton>
             {isOwner && reservation.status === "Pending" ? (
-              <div className="d-flex mt-10">
+              <><div className="d-flex mt-10">
                 <button
                   className="btn-controls"
                   onClick={() => {
                     statusChangeHandler(reservation.id, "Approved");
-                  }}
+                  } }
                 >
                   Approve
                 </button>
@@ -113,11 +124,11 @@ const Reservations = () => {
                   className="btn-controls"
                   onClick={() => {
                     statusChangeHandler(reservation.id, "Declined");
-                  }}
+                  } }
                 >
                   Decline
                 </button>
-              </div>
+              </div></>
             ) : null}
           </div>
         );

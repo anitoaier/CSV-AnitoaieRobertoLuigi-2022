@@ -237,3 +237,9 @@ input[type="file"] {
 .pre-wrap {
   white-space: pre-wrap;
 }
+.CancelButton {
+    background: red;
+    padding: 4px;
+    margin: 8px;
+    color: black;
+}
