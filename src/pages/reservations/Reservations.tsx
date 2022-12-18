@@ -77,11 +77,11 @@ const Reservations = () => {
   };
   const deleteReservation = (reservationId:string) => {
     remove("reservations", reservationId).then(()=>{
-      setReservations((prevTables) => {
-        const newTables = prevTables?.filter((table) => table.id !== reservationId );
-        return newTables;
+      setReservations((prevReservations) => {
+        const newReservations = prevReservations?.filter((reservation) => reservation.id !== reservationId );
+        return newReservations;
     })
-      alert("reservation was canceled succesfully")
+      alert("Reservation was canceled succesfully")
     })
 }
 
